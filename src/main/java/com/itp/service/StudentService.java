@@ -1,0 +1,27 @@
+package com.itp.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.itp.model.Student;
+import com.itp.repository.StudentRepository;
+
+@Service
+public class StudentService {
+
+	@Autowired
+	StudentRepository studRepo;
+	public void insertStudent(Student student) throws Exception {
+		studRepo.insertStudent(student);
+		
+	}
+
+	public List<Student> allStudent() throws Exception {
+		return studRepo.allStudent();
+	}
+	
+	
+
+}
