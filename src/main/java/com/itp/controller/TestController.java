@@ -68,6 +68,8 @@ public class TestController {
 	{	
 		studService.deleteStudent(student.getRno());
 		return "confirm-delete";
+		//return "redirect:/allStudents";
+		
 	}
 
 }
