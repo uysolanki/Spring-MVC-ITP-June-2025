@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,15 +36,24 @@ public class TestController {
 		return "register-student";
 	}
 	
+//	@PostMapping("/addStudent")
+//	public ModelAndView addStudent(@ModelAttribute Student student) throws Exception
+//	{
+//		studService.insertStudent(student);
+//		System.out.println(student);
+//		ModelAndView mav=new ModelAndView();
+//		mav.addObject("stud",student.getSname());
+//		mav.setViewName("confirm");
+//		return mav;
+//	}
+	
+	
 	@PostMapping("/addStudent")
-	public ModelAndView addStudent(@ModelAttribute Student student) throws Exception
+	public String addStudent(@ModelAttribute Student student) throws Exception
 	{
 		studService.insertStudent(student);
 		System.out.println(student);
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("stud",student.getSname());
-		mav.setViewName("confirm");
-		return mav;
+		return "redirect:/allStudents";
 	}
 	
 	@GetMapping("/allStudents")
@@ -63,12 +73,21 @@ public class TestController {
 		return "delete-student-form";
 	}
 	
-	@PostMapping("/deleteStudent") 
-	public String deleteStudent(@ModelAttribute Student student) throws Exception
+//	@PostMapping("/deleteStudent") 
+//	public String deleteStudent(@ModelAttribute Student student) throws Exception
+//	{	
+//		studService.deleteStudent(student.getRno());
+//		//return "confirm-delete";
+//		return "redirect:/allStudents";
+//		
+//	}
+//	
+	@RequestMapping("/deleteStudent/{rno}") 
+	public String deleteStudent(@PathVariable int rno) throws Exception
 	{	
-		studService.deleteStudent(student.getRno());
-		return "confirm-delete";
-		//return "redirect:/allStudents";
+		studService.deleteStudent(rno);
+		//return "confirm-delete";
+		return "redirect:/allStudents";
 		
 	}
 
