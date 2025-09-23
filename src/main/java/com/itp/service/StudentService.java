@@ -13,6 +13,7 @@ public class StudentService {
 
 	@Autowired
 	StudentRepository studRepo;
+	
 	public void insertStudent(Student student) throws Exception {
 		studRepo.insertStudent(student);
 		
@@ -20,6 +21,11 @@ public class StudentService {
 
 	public List<Student> allStudent() throws Exception {
 		return studRepo.allStudent();
+	}
+
+	public void deleteStudent(int rno) throws Exception{
+		studRepo.deleteStudent(rno);
+		
 	}
 	
 	

@@ -56,6 +56,22 @@ public class StudentRepository
 		
 		return students;
 	}
+
+	public void deleteStudent(int rno) throws Exception
+	{
+		Connection con=MySQLDBConnectionJune.getConnection();
+		
+		String query="delete from student where rno=?";
+		PreparedStatement ps=con.prepareStatement(query);
+		ps.setInt(1, rno);
+		
+		
+		int rows=ps.executeUpdate();
+		
+		ps.close();
+		con.close();
+		
+	}
 	
 
 }

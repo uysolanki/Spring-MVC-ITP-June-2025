@@ -54,5 +54,20 @@ public class TestController {
 		model.addAttribute("studentList",students);
 		return "all-students";
 	}
+	
+	@RequestMapping("/deleteStudentForm")
+	public String deleteStudentForm(Model model)
+	{
+		Student s=new Student();
+		model.addAttribute("student",s);
+		return "delete-student-form";
+	}
+	
+	@PostMapping("/deleteStudent") 
+	public String deleteStudent(@ModelAttribute Student student) throws Exception
+	{	
+		studService.deleteStudent(student.getRno());
+		return "confirm-delete";
+	}
 
 }
