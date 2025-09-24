@@ -90,5 +90,20 @@ public class TestController {
 		return "redirect:/allStudents";
 		
 	}
+	
+	@RequestMapping("/updateStudentForm/{rno}")
+	public String updateStudentForm(@PathVariable int rno,Model model) throws Exception
+	{
+		Student s=studService.getStudent(rno);
+		model.addAttribute("student",s);
+		return "update-student-form";
+	}
+	
+	@RequestMapping("/updateStudent")
+	public String updateStudent(@ModelAttribute Student student) throws Exception
+	{
+		studService.updateStudent(student);
+		return "redirect:/allStudents";
+	}
 
 }

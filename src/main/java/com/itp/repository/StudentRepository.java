@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.stereotype.Repository;
 
@@ -68,6 +69,41 @@ public class StudentRepository
 		
 		int rows=ps.executeUpdate();
 		
+		ps.close();
+		con.close();
+		
+	}
+
+	public Student getStudent(int rno) throws Exception
+	{
+		Connection con=MySQLDBConnectionJune.getConnection();
+		Student student=null;
+		String query="select * from student where rno=?";
+		PreparedStatement ps=con.prepareStatement(query);
+		ps.setInt(1, rno);
+		
+		
+		ResultSet rs=ps.executeQuery();
+		if(rs.next())
+		student=new Student(rs.getInt("rno"),rs.getString("studname"),rs.getDouble("studper"));
+		
+		ps.close();
+		con.close();
+		return student;
+	}
+
+	public void updateStudent(Student student) throws Exception
+	{
+		Connection con=MySQLDBConnectionJune.getConnection();
+
+		String query="update student set studname=?,studper=? where rno=?";
+		PreparedStatement ps=con.prepareStatement(query);
+		ps.setString(1, student.getSname());
+		ps.setDouble(2, student.getPer());
+		ps.setInt(3, student.getRno());
+		
+		
+		int rows=ps.executeUpdate();
 		ps.close();
 		con.close();
 		

@@ -27,6 +27,16 @@ public class StudentService {
 		studRepo.deleteStudent(rno);
 		
 	}
+
+	public Student getStudent(int rno) throws Exception
+	{
+		return studRepo.getStudent(rno);
+	}
+
+	public void updateStudent(Student student) throws Exception{
+		studRepo.updateStudent(student);
+		
+	}
 	
 	
 
