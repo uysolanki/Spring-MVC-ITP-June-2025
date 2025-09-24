@@ -11,7 +11,6 @@
 			Enter Rno : <form:input path="rno" />	<br>
 			Enter Student Name : <form:input path="sname" /> <br>
 			Enter Percentage : <form:input path="per" /> <br>
-			
 			<input type="submit" name="s1" value="Update Student">
 		</form:form >
 </body>

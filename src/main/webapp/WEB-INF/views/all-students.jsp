@@ -23,8 +23,8 @@
                 <td>${student.rno}</td>
                 <td>${student.sname}</td>
                 <td>${student.per}</td>
-                <td><a href="deleteStudent/${student.rno}" class="btn btn-danger">Delete</a></td>
-                <td><a href="updateStudentForm/${student.rno}" class="btn btn-secondary">Update</a></td>
+                <td><a href="deleteStudent/${student.rno}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+                <td><a href="updateStudentForm/${student.rno}" class="btn btn-secondary" >Update</a></td>
             </tr>
         </c:forEach>
     </table>
